@@ -185,7 +185,7 @@ if __name__ == '__main__':
             if args.t:
                 THREADS = args.t
             else:
-                THREADS = 10
+                THREADS = 5
             
             # exclude code
             EXC_CODE = []
