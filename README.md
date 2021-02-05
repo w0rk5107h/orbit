@@ -1,7 +1,7 @@
 # orbit
 An advances web fuzzing tool
 
-###** USAGE **
+### ** USAGE **
 1. Compulsory Arguments
 ```
 MODE          What mode do you want to use. (dir/vhost)  <for now only dir is supported, vhost comming soon>
@@ -32,7 +32,7 @@ MODE          What mode do you want to use. (dir/vhost)  <for now only dir is su
               Eg: -inc-cc 118
 ```
 
-###** EXAMPLES **
+### ** EXAMPLES **
 ```
 [1] python orbit.py dir -u http://example.com/ORBIT -w /path/to/wordlist 
 
