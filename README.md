@@ -1,5 +1,5 @@
 # orbit
-An advances web fuzzing tool
+An advanced web fuzzing tool
 
 ## DISCLAIMER 
 ```
