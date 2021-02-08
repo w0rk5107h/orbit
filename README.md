@@ -1,5 +1,5 @@
 # orbit
-An advances web fuzzing tool
+An advanced web fuzzing tool
 
 ## DISCLAIMER 
 ```
@@ -13,7 +13,7 @@ IF YOU ARE TRYING THIS, MAKE SURE YOU HAVE THE PERMISSION OF THE VICTIM MACHINE'
 1. Compulsory Arguments
 ```
 MODE          What mode do you want to use. (dir/vhost)  <for now only dir is supported, vhost comming soon>
--u  URL       Target URL with the 'ORBIT' keyword. (Plcae 'ORBIT' where the actual fuzzing needs to be done)
+-u  URL       Target URL with the 'ORBIT' keyword. (Place 'ORBIT' where the actual fuzzing needs to be done)
                         Eg: http://example.com/ORBIT/
 -w WORDLIST   Path of the wordlist to be used.
 ```
