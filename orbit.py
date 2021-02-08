@@ -10,7 +10,7 @@ IF YOU ARE TRYING THIS, MAKE SURE YOU HAVE THE PERMISSION OF THE VICTIM MACHINE'
 import requests
 import os
 import argparse
-import _thread
+import threading
 from bs4 import BeautifulSoup
 import re
 
@@ -32,8 +32,11 @@ def start_dir(URL, WORDS, THREADS, EXC_CODE, INC_CODE, EXC_WC, INC_WC, EXC_CC, I
     for i in range(THREAD, len(WORDS), THREADS):
         URL = URL.replace('ORBIT', WORDS[i])
         URL = URL.replace(WORDS[i-THREADS], WORDS[i])
-        # print(f'Thread {THREAD} sending request to {WORDS[i]}') # log
-        r = requests.get(URL)
+        try:
+            r = requests.get(URL)
+        except:
+            print(f'Cant resolve "{URL}"')
+            break
         STATUS_CODE = r.status_code
         WORD_COUNT = int
         CHAR_COUNT = int
@@ -239,11 +242,18 @@ if __name__ == '__main__':
             else:
                 pass
 
-            # start brute force
-            # for THREAD in range(0, THREADS):
-            #     _thread.start_new_thread(start_dir,(URL, WORDS, THREADS, EXC_CODE, INC_CODE, EXC_WC, INC_WC, EXC_CC, INC_CC, THREAD))
+            # make and start threads
+            THREADS_LIST = []
+            for THREAD in range(0, THREADS):
+                t = threading.Thread(target=start_dir, args=[URL, WORDS, THREADS, EXC_CODE, INC_CODE, EXC_WC, INC_WC, EXC_CC, INC_CC, THREAD]).start()
+                THREADS_LIST.append(t)
 
-            # test
-            start_dir(URL,WORDS,1,EXC_CODE, INC_CODE, EXC_WC, INC_WC, EXC_CC, INC_CC, 0)
+            # join all the threads
+            for THREAD in THREADS_LIST:
+                try:
+                    THREAD.join()
+                except:
+                    pass
+
     except KeyboardInterrupt:
         print('Stopping....')
